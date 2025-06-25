@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transkrrt</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <div id="logo"><img src="{{ url_for('static', filename='speech to text 2 final.png') }}" alt="Transkrrt" /></div>
+    <div class="dropdown">
+      <button class="dropbtn">Use cases <i class="fa fa-caret-down"></i></button>
+      <div class="dropdown-content">
+        <a href="#"><i class="fa fa-podcast"></i> Podcasts</a>
+        <a href="#"><i class="fa fa-microphone"></i> Interviews</a>
+        <a href="#"><i class="fa fa-chalkboard-teacher"></i> Lectures</a>
+        <a href="#"><i class="fa fa-users"></i> Meetings</a>
+      </div>
+    </div>
+    <button id="Signin">Sign in</button>
+    <button id="Signup">Sign up</button>
+  </header>
+
+  <div id="box">
+    <div id="box2">
+      <div class="upload-ui">
+        <h2><img src="{{ url_for('static', filename='speech to text 2 final.png') }}" alt="Transkrrt" /></h2>
+        <div class="upload-box">
+          <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="audio_file" accept="audio/*" required />
+            <button type="submit" class="upload-btn">Upload & Transcribe</button>
+          </form>
+          <p>Drag & drop a file<br>or <a href="#">import from a link</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if transcription %}
+  <div style="margin-top: 30px; padding: 20px; background-color: #f2f2f2; border-radius: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+    <h3>Transcribed Text:</h3>
+    <p>{{ transcription }}</p>
+  </div>
+  {% endif %}
+</body>
+</html>
